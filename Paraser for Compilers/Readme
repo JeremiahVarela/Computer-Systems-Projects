@@ -1,0 +1,30 @@
+# Recursive Descent Parser
+
+This project is a C program that implements a simple recursive descent parser for a small grammar. The program reads a string from the user, applies grammar rules using recursive functions, and determines whether the input string is valid or invalid.
+
+## Overview
+
+The parser uses recursive function calls to match each part of the grammar. Each non-terminal in the grammar is represented by its own function in the program:
+
+- `S()`
+- `A()`
+- `Aprime()`
+- `B()`
+
+The program also prints each parsing step so the user can see which grammar rule is being applied as the input is processed.
+
+## Grammar Used
+
+The parser is based on the following grammar:
+
+```text
+S  -> aAB
+A  -> bA'
+A' -> bcA' | epsilon
+B  -> d
+
+How to compile 
+gcc Parser.c -o parser
+
+How to run 
+./parser
