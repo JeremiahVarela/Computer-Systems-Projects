@@ -1,0 +1,67 @@
+# Parallel Programming Courseworkete
+This folder contains C programming assignments and practice programs focused on parallel programming, numerical computation, and performance testing. 
+The projects were completed as part of Computer Systems courswork and were mainly written and tested in Linux/Ubuntu environment
+
+ Overview
+
+The programs in this folder demostrate basic concepts in parallel programing using MPI, OpenMP, and pthreads. Several programs approximate mathmatical results such as pi or the area under a curve using the trapezoidal rule,
+While others demonstrate process communication, thread creation, synchronization, and parallel sorting.
+
+This repository is intended as a portfolio sample to show experience with C programming, Linux shell usage, compiling from the terminal, and introductory parallel programming concepts.
+
+Topics covered
+
+- C programming
+- Linux command-line compiling and execution
+- MPI process creation and communication
+- MPI_send, MPI_recv, MPI_Bcast, and MPI_reduce
+- OpenMP parallel regions, parallel for loops, reductions, and critical sections
+- Pthread thread creation and joining
+- Mutex locks and shared-variable protection
+- Trapezoidal rule numerical integration
+- Pi approximation using series  and mote carlo methods
+- Odd-even sorting in serial and parallel versions
+- Runtine testing and performance comparision
+
+File Categories 
+
+MPI Programs
+
+These files demostrate MPI process communication and distributed computation:
+
+MPIP1.c MPI greeting program where worker processes send messageMs to process 0
+MPIP2.c MPI message passing from process 0 to other processes
+MPIP3.c MPI trapezoidal rule program using broadcast and reduce
+pi_mpi.c MPI Monte Carlo pi estimation program
+
+OpenMP Programs
+
+These files demostrate shared-memory parallelism using OpenMP:
+
+Openmp_hello.c   Basic OpenMP hello world program
+assignemtn2pt2.c OpenMP trapezoidal rule approximation
+assignmentp2pt3.c OpenMP pi approximation using a prallel for loop reduction
+Trap1.c through trap4.c Different OpenMP trapezoidal rule versions using critical sections and reduction
+assignment3pt1.c Single-threaded odd-even sort
+Assignment3pt2.c Parallel odd-even sort using OpenMP parallel for.
+Assignment3pt3.c Parallel odd-even sort using an OpenMP parallel region and for loops.
+
+Pthread Programs
+
+These files demonstrate POSIX thread creation and synchronization:
+
+helloworld.c Basic pthread hello world program
+Pi.c Pthread-based pi estimation practice program
+pi_mutex3.c pthread pi estimation using a mutex and local sums
+
+Serial program
+
+pi_serial.c Serial Monte Carlo pi estimation used for comparison with parallel versions
+
+Example Compile and Run Commands
+Compile and run an MPI program
+
+bash
+
+mpicc mpi_trap.c  -o mpi_trap
+mpirun -np 4 ./mpi_trap
