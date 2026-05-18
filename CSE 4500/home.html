@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- This is the head section  and creates the title area and references the CSS file -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Home Page</title>
+  <link rel="stylesheet" href="nav.css" />
+  <!-- This is the style section and creates the styles for the page -->
+  <style>
+    html, body { height: 100%; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--text);
+      background: linear-gradient(180deg, var(--bg) 0%, #0b1025 50%, #0a0f22 100%);
+    }
+    /* This is the style section and creates the styles for the page */
+    main { max-width: 900px; margin: 0 auto; padding: 1rem; }
+    section { padding: 3rem 0; border-bottom: 1px dashed rgba(255,255,255,0.08); }
+    h1, h2 { margin: 0 0 .5rem; }
+    p { color: var(--muted); line-height: 1.6; }
+    :focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; border-radius: 0.5rem; }
+  </style>
+</head>
+    <!-- This is the main content area and formats our navigation -->
+<body>
+  <a href="#home" class="skip-link">Skip to main content</a>
+
+  <header>
+    <!-- This is the header section and contains the navigation elements -->
+    <div class="nav" role="navigation" aria-label="Primary">
+      <div class="brand"><a href="home.html">MyWebsite</a></div>
+
+      <input type="checkbox" id="nav-toggle" aria-label="Toggle navigation menu" />
+      <label for="nav-toggle" class="hamburger" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </label>
+        <!-- This is the navigation section and creates our links to other pages -->
+      <nav>
+        <ul>
+          <li><a href="home.html" aria-current="page">Home</a></li>
+          <li><a href="education.html">Education</a></li>
+          <li><a href="#">Experiences</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+    <!-- This is the main section and creates our content for the home page -->
+  <main id="home">
+    <section aria-labelledby="home-title">
+      <h1 id="home-title">Welcome to My Website</h1>
+      <p>This is the home page. Use the navigation bar to visit my education page and view my educational background.</p>
+      <p> I enjoy coding and doing many other things such as games and music</p>
+      <p>Here are some images that represent my interests:</p>
+        <img src="C:\Users\19097\Pictures\Screenshots\Screenshot (785).png" alt="My current favorite epic song legends" width="300" height="300">
+        <img src="C:\Users\19097\Downloads\SinisterCobra500.png" alt="The profile picture my friend made for me" width="150" height="150">
+    </section>
+  </main>
+<!-- This is the end of the code which uses my nav bar and creates the layout for the page and connects to the other pages-->
+</body>
+</html>

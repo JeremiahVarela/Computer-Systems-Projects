@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Form Validation Demo</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    :root { font-family: system-ui, Arial, sans-serif; }
+    body { display:flex; min-height:100vh; align-items:center; justify-content:center; background:#f6f7fb; }
+    form { background:#fff; padding:24px; border-radius:12px; width:min(560px, 92vw); box-shadow:0 6px 24px rgba(0,0,0,.08); }
+    h1 { margin:0 0 12px; font-size:1.25rem; }
+    .row { display:grid; grid-template-columns: 150px 1fr; gap:12px; margin:12px 0; align-items:center; }
+    label { font-weight:600; }
+    input[type="text"], input[type="password"] {
+      width:100%; padding:10px 12px; border:1px solid #c9cfdb; border-radius:8px; font-size:15px;
+    }
+    input:invalid { outline:none; }
+    .error {
+      grid-column: 2 / -1;
+      color:#b00020; font-size:.9rem; margin-top:-6px; min-height:1.1em;
+    }
+    .hint { grid-column: 2 / -1; color:#58627a; font-size:.85rem; }
+    .actions { display:flex; gap:12px; justify-content:flex-end; margin-top:10px; }
+    .btn {
+      padding:10px 14px; border:none; border-radius:8px; cursor:pointer; font-weight:700;
+    }
+    .btn.primary { background:#1e61ff; color:#fff; }
+    .success { margin-top:12px; color:#146c2e; font-weight:700; }
+  </style>
+</head>
+<body>
+
+  <form id="signupForm" novalidate>
+    <h1>Sign Up</h1>
+
+    <div class="row">
+      <label for="firstName">First Name</label>
+      <input id="firstName" name="firstName" type="text" autocomplete="given-name" required />
+      <div id="firstNameError" class="error" aria-live="polite"></div>
+    </div>
+
+    <div class="row">
+      <label for="lastName">Last Name</label>
+      <input id="lastName" name="lastName" type="text" autocomplete="family-name" required />
+      <div id="lastNameError" class="error" aria-live="polite"></div>
+    </div>
+
+    <div class="row">
+      <label for="phone">Phone</label>
+      <input id="phone" name="phone" type="text" placeholder="123-456-7890" inputmode="numeric" required />
+      <div class="hint">Format: xxx-xxx-xxxx</div>
+      <div id="phoneError" class="error" aria-live="polite"></div>
+    </div>
+
+    <div class="row">
+      <label for="password">Password</label>
+      <input id="password" name="password" type="password" required />
+      <div class="hint">Min 10 chars, at least 1 uppercase and 1 special character</div>
+      <div id="passwordError" class="error" aria-live="polite"></div>
+    </div>
+
+    <div class="row">
+      <label for="confirmPassword">Confirm Password</label>
+      <input id="confirmPassword" name="confirmPassword" type="password" required />
+      <div id="confirmPasswordError" class="error" aria-live="polite"></div>
+    </div>
+
+    <div class="actions">
+      <button type="reset" class="btn">Reset</button>
+      <button class="btn primary" type="submit">Create Account</button>
+    </div>
+
+    <div id="success" class="success" role="status" aria-live="polite"></div>
+  </form>
+
+  <script>
+    //  Validation Rules 
+    const onlyLetters = /^[A-Za-z]+$/;                     // 1) letters only
+    const phoneRegex = /^\d{3}-\d{3}-\d{4}$/;              // 4) xxx-xxx-xxxx
+    const strongPw   = /^(?=.*[A-Z])(?=.*[^A-Za-z0-9]).{10,}$/; // 2 & 3) len>=10, >=1 uppercase, >=1 special
+
+    //  Form & Fields 
+    const form = document.getElementById('signupForm');
+    const firstName = document.getElementById('firstName');
+    const lastName  = document.getElementById('lastName');
+    const phone     = document.getElementById('phone');
+    const password  = document.getElementById('password');
+    const confirmPw = document.getElementById('confirmPassword');
+
+    // Error containers
+    const errs = {
+      firstName: document.getElementById('firstNameError'),
+      lastName:  document.getElementById('lastNameError'),
+      phone:     document.getElementById('phoneError'),
+      password:  document.getElementById('passwordError'),
+      confirmPw: document.getElementById('confirmPasswordError')
+    };
+
+    // Validation Functions
+    function setError(el, msg) {
+      el.classList.add('invalid');
+      msg.target ? null : null;
+    }
+    // Show or clear error message
+    function showError(container, message) {
+      container.textContent = message || '';
+    }
+    // Validate name fields
+    function validateName(input, container) {
+      const value = input.value.trim();
+      if (!value) { showError(container, 'Required.'); return false; }
+      if (!onlyLetters.test(value)) {
+        showError(container, 'Letters only (A–Z, a–z).');
+        return false;
+      }
+      showError(container, '');
+      return true;
+    }
+    // Validate phone number
+    function validatePhone() {
+      const v = phone.value.trim();
+      if (!v) { showError(errs.phone, 'Required.'); return false; }
+      if (!phoneRegex.test(v)) {
+        showError(errs.phone, 'Use format: 123-456-7890.');
+        return false;
+      }
+      showError(errs.phone, '');
+      return true;
+    }
+    // Validate password
+    function validatePassword() {
+      const v = password.value;
+      if (!v) { showError(errs.password, 'Required.'); return false; }
+      if (v.length < 10) {
+        showError(errs.password, 'Minimum length is 10 characters.');
+        return false;
+      }
+      if (!strongPw.test(v)) {
+        showError(errs.password, 'Must include at least one uppercase letter and one special character.');
+        return false;
+      }
+      showError(errs.password, '');
+      return true;
+    }
+    // Validate confirm password
+    function validateConfirm() {
+      const a = password.value;
+      const b = confirmPw.value;
+      if (!b) { showError(errs.confirmPw, 'Please confirm your password.'); return false; }
+      if (a !== b) { showError(errs.confirmPw, 'Passwords do not match.'); return false; }
+      showError(errs.confirmPw, '');
+      return true;
+    }
+
+    // Live validation
+    firstName.addEventListener('input', () => validateName(firstName, errs.firstName));
+    lastName .addEventListener('input', () => validateName(lastName,  errs.lastName));
+    phone    .addEventListener('input', validatePhone);
+    password .addEventListener('input', () => { validatePassword(); validateConfirm(); });
+    confirmPw.addEventListener('input', validateConfirm);
+
+    // Submit handler
+    form.addEventListener('submit', (e) => {
+      e.preventDefault(); // stop real submission for demo
+
+      const ok =
+        validateName(firstName, errs.firstName) &
+        validateName(lastName,  errs.lastName)  &
+        validatePhone() &
+        validatePassword() &
+        validateConfirm();
+
+      if (ok) {
+        document.getElementById('success').textContent = 'All validations passed. Form submitted!';
+      } else {
+        document.getElementById('success').textContent = '';
+      }
+    });
+
+    form.addEventListener('reset', () => {
+      Object.values(errs).forEach(c => c.textContent = '');
+      document.getElementById('success').textContent = '';
+    });
+  </script>
+</body>
+</html>

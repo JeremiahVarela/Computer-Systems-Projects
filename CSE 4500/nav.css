@@ -1,0 +1,83 @@
+/* nav.css — navigation only and creation of the color bars to make it look nice */
+:root {
+  --bg: #0f172a;
+  --bg-elev: #111827;
+  --text: #e5e7eb;
+  --muted: #9ca3af;
+  --accent: #60a5fa;
+  --ring: #3b82f6;
+}
+
+/* Skip link  */
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  background: #111827;
+  color: white;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0 0 0.5rem 0.5rem;
+}
+.skip-link:focus { left: 0.5rem; outline: 2px solid var(--ring); }
+
+/* Top bar */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: saturate(180%) blur(10px);
+}
+/* Navigation display and creation of the color bars */
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.5rem 1rem;
+  background: color-mix(in srgb, var(--bg-elev) 85%, transparent);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+/* Brand */
+.brand { font-weight: 700; letter-spacing: 0.4px; }
+.brand a { color: var(--text); text-decoration: none; }
+
+/* Mobile toggle */
+#nav-toggle { display: none; }
+.hamburger { display: none; cursor: pointer; padding: 0.25rem; border-radius: 0.5rem; }
+.hamburger:focus { outline: 2px solid var(--ring); outline-offset: 2px; }
+.hamburger span {
+  display: block; width: 24px; height: 2px; margin: 5px 0; background: var(--text);
+  transition: transform 200ms ease, opacity 200ms ease;
+}
+
+/* Links creates our display block and tells it what transitions to apply */
+nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 0.75rem; }
+nav a {
+  display: inline-block;
+  padding: 0.5rem 0.75rem;
+  color: var(--text);
+  text-decoration: none;
+  border-radius: 0.5rem;
+  transition: background 150ms ease, color 150ms ease, transform 120ms ease;
+}
+/* Hover and focus states */
+nav a:hover { background: rgba(255, 255, 255, 0.06); }
+nav a:focus { outline: 2px solid var(--ring); outline-offset: 2px; }
+
+/* Highlight the current page via aria-current */
+nav a[aria-current="page"] {
+  color: white;
+  background: rgba(96,165,250,0.3);
+}
+
+/* Mobile menu */
+@media (max-width: 720px) {
+  .hamburger { display: block; }
+  nav ul {
+    position: absolute; left: 0; right: 0; top: 100%;
+    background: color-mix(in srgb, var(--bg-elev) 92%, transparent);
+    display: none; flex-direction: column; padding: 0.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+  #nav-toggle:checked ~ nav ul { display: flex; }
+}

@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- This is the head section  and creates the title area and references the CSS file -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Education</title>
+  <link rel="stylesheet" href="nav.css" />
+  <!-- This is the style section and creates the table and other styles for the page -->
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, "Helvetica Neue", Arial;
+      color: var(--text);
+      background: linear-gradient(180deg, var(--bg) 0%, #0b1025 50%, #0a0f22 100%);
+    }
+    main { max-width: 900px; margin: 0 auto; padding: 1rem; }
+    h1 { margin-top: 1rem; }
+    p { color: var(--muted); line-height: 1.6; }
+    .table-wrap { overflow-x: auto; margin-top: 1rem; border-radius: 0.5rem; }
+    table { width: 100%; border-collapse: collapse; }
+    thead th { text-align: left; background: #0b122a; color: var(--text); }
+    th, td { padding: 0.75rem 1rem; border: 1px solid rgba(229,231,235,0.12); }
+    tbody tr:nth-child(even) { background: rgba(255,255,255,0.03); }
+    caption { caption-side: top; text-align: left; font-weight: 600; margin-bottom: .5rem; color: var(--text); }
+  </style>
+</head>
+<body>
+    <!-- This is the main content area and formats our navigation -->
+  <a href="#content" class="skip-link">Skip to content</a>
+
+  <header>
+    <!-- This is the header section and contains the navigation elements -->
+    <div class="nav" role="navigation" aria-label="Primary">
+      <div class="brand"><a href="home.html">MyWebsite</a></div>
+
+      <input type="checkbox" id="nav-toggle" aria-label="Toggle navigation menu" />
+      <label for="nav-toggle" class="hamburger" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </label>
+      <!-- This is the navigation section and creates our links to other pages -->
+      <nav>
+        <ul>
+          <li><a href="home.html">Home</a></li>
+          <li><a href="education.html" aria-current="page">Education</a></li>
+          <li><a href="#">Experiences</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <!-- This is the main section and creates our table and fills it with my data -->
+  <main id="content">
+    <h1>Education</h1>
+    <p>Hello I am Jeremiah Varela </p>
+
+    <div class="table-wrap">
+      <table>
+        <caption>Educational Background</caption>
+        <thead>
+          <tr>
+            <th>Institute Name</th>
+            <th>Passing Year</th>
+            <th>Location</th>
+            <th>Grade (GPA/%)</th>
+            <th>Degree</th>
+            <th>Major</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Fontana High School</td>
+            <td>2020</td>
+            <td>Fontana, CA</td>
+            <td>3.7 GPA</td>
+            <td>High School Diploma</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td>California State University, San Bernardino</td>
+            <td>2026</td>
+            <td>San Bernardino, CA</td>
+            <td>2.83 GPA</td>
+            <td>B.S.</td>
+            <td>Computer Science</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+</body>
+</html>

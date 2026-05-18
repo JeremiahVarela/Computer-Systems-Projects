@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <script>
+      /* 1. while loop */
+      let count = 5;
+      let savedCount = [];
+      document.writeln("<br>1. before loop:", count, " ", savedCount);
+      while (count >= 1) {
+        savedCount.push(count);
+        count--;
+      }
+      document.writeln("<br>1. after loop:", savedCount);
+
+      /* 2. do while loop */
+      let numbers = 1;
+      let total = 0;
+      document.writeln("<br><br>2. before loop:", numbers, " ", total);
+      do {
+        total = total + numbers;
+        numbers++;
+      } while (numbers <= 3);
+      document.writeln("<br>2. after loop:", total);
+
+      /* 3. for loop */
+      let array = ["London", "New York", "Paris", "Berlin"];
+      let visitedCities = [];
+      for (let i = 0; i < array.length; i++) {
+        if (array[i] === "Paris") continue;
+        visitedCities.push(array[i]);
+      }
+      document.writeln("<br><br>3. visited cities:", visitedCities);
+
+      /* 4. for-of loop */
+      let smallNumbers = [];
+      let numberArray = [1, 2, 3, 4, 5];
+      for (let num of numberArray) {
+        if (num === 4) break;
+        smallNumbers.push(num);
+      }
+      document.writeln("<br><br>4. small numbers:", smallNumbers);
+
+      /* 5. for-in loop */
+      let worldCities = {
+        "Sydney": 5000000,
+        "Tokyo": 9000000,
+        "Berlin": 3500000,
+        "Paris": 2200000
+      };
+      let largeCities = {};
+      for (let city in worldCities) {
+        if (worldCities[city] < 3000000) continue;
+        largeCities[city] = worldCities[city];
+      }
+      document.writeln("<br><br>5. large cities:", JSON.stringify(largeCities));
+
+      /* 6. forEach loop */
+      let teas = ["earl grey", "green tea", "chai", "oolong tea"];
+      let availableTeas = [];
+      teas.forEach(tea => {
+        if (tea === "chai") return;
+        availableTeas.push(tea);
+      });
+      document.writeln("<br><br>6. available teas:", availableTeas);
+
+      /* 7. for loop skip 7 and double others */
+      let nums = [2, 5, 7, 9];
+      let doubledNumbers = [];
+      for (let k = 0; k < nums.length; k++) {
+        if (nums[k] === 7) continue;
+        doubledNumbers.push(nums[k] * 2);
+      }
+      document.writeln("<br><br>7. doubled numbers:", doubledNumbers);
+
+      /* 8. makeTea function */
+      function makeTea(typeOfTea) {
+        return `Making ${typeOfTea}`;
+      }
+      let teaOrder = makeTea("green tea");
+      document.writeln("<br><br>8. tea order:", teaOrder);
+
+      /* 9. processTeaOrder function */
+      function processTeaOrder(makeTeaFunction) {
+        return makeTeaFunction("earl grey");
+      }
+      document.writeln("<br><br>9. processed tea order:", processTeaOrder(makeTea));
+
+      /* 10. arrow function calculateTotal */
+      const calculateTotal = (price, quantity) => price * quantity;
+      let totalCost = calculateTotal(4.5, 3);
+      document.writeln("<br><br>10. total cost:", totalCost);
+    </script>
+  </body>
+</html>
