@@ -1,0 +1,92 @@
+ Web Development Coursework
+
+This folder contains web development coursework and practice files focused on HTML, CSS, JavaScript, responsive navigation, form validation, and basic UI styling. The projects were created while practicing 
+front-end web development concepts and organizing pages, stylesheets, and scripts in a small website structure.
+
+ Overview
+
+The files in this folder include several small web pages and assignments. Some pages demonstrate basic HTML structure and CSS styling, while others include navigation layouts, a personal website/education page,
+a registration form with validation, Tailwind CSS practice, and JavaScript loop/array exercises.
+
+This repository is intended as a portfolio sample to show experience with front-end development, JavaScript validation, page layout, responsive navigation, and basic web application coursework.
+
+Technologies Used
+
+- HTML
+- CSS
+- JavaScript
+- Tailwind CSS
+- Node.js JavaScript practice
+- VS Code
+- Basic C++ practice
+
+ Project Files
+
+ Website Pages
+
+- HomePage.html - Home/login-style page using shared CSS styling.
+- AboutUs.html - About page for an InfiniteGaming-themed server hosting website.
+- home.html - Personal home page with navigation and page content.
+- education.html - Education page with a styled table for academic background.
+- Index.html - Basic HTML practice page using headings, lists, images, and page styling.
+- SampleCSS.html - CSS layout and navigation practice page.
+- Assigment3.html - External CSS selector example page.
+- Assignment5.html - JavaScript loop and function practice in an HTML file.
+- assignment6.html - Form validation demo using embedded HTML, CSS, and JavaScript.
+- Tailwind.html - Tailwind CSS practice page with a grid layout and gradient button.
+
+ Stylesheets
+
+- styles.css - Shared styling for the InfiniteGaming home/about pages.
+- Assignment3.css - CSS selector practice including class, ID, grouped, hover, and focus styles.
+- registration.css - Styling for the registration form page.
+- nav.css - Responsive navigation bar styling with a mobile hamburger menu.
+
+ JavaScript Files
+
+- registration.js - Form validation for the registration page, including name, phone, gender, date of birth, country, and email checks.
+- Assignment04.js - Node.js JavaScript practice using arrays, loops, sum, average, min/max, and user input search.
+
+ Other Files
+
+- command.cpp - C++ Command design pattern example using TV and Stereo receiver classes.
+- settings.json, c_cpp_properties.json, and launch.json - VS Code configuration files used while working on the project.
+
+Features Demonstrated
+
+- Multi-page HTML website structure
+- Linking external CSS and JavaScript files
+- Navigation bars and page-to-page links
+- Responsive navigation with a hamburger menu
+- CSS gradients, borders, shadows, hover states, and layout styling
+- HTML forms with input fields, radio buttons, select menus, and buttons
+- JavaScript form validation
+- JavaScript loops, arrays, functions, and user input
+- Basic Tailwind CSS utility classes
+- HTML tables for structured information
+- Basic C++ design pattern practice
+
+How to View the HTML Pages
+
+Open any .html file directly in a browser, or use VS Code with a live preview extension.
+
+Recommended starting files:
+
+text
+HomePage.html
+AboutUs.html
+registration.html
+home.html
+education.html
+Tailwind.html
+```
+
+ What I Learned
+
+Through these assignments, I practiced building web pages with HTML and CSS, connecting multiple files together, creating styled navigation layouts, validating form input with JavaScript, and using loops, arrays, and 
+functions. I also gained more experience working in VS Code and organizing coursework files for a web development project.
+
+Notes
+
+These files are coursework and practice examples, so some pages are separate assignments rather than one complete production website. They are included to show progress with HTML, CSS, JavaScript, responsive layout,
+form validation, and basic programming concepts.
